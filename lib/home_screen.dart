@@ -1,11 +1,21 @@
+import 'package:final_project/Height_Widget.dart';
 import 'package:flutter/material.dart';
-import 'BmiPage.dart';
+import 'gender_widget.dart';
 
- class HomeScreen extends StatelessWidget {
-   const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
-   @override
-   Widget build(BuildContext context) {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  int _gender = 0;
+  int _height = 150;
+
+  @override
+  Widget build(BuildContext context) {
      return Scaffold(
        appBar: AppBar(
          centerTitle: true,
@@ -19,28 +29,20 @@ import 'BmiPage.dart';
                 shape: const RoundedRectangleBorder(),
                 child: Column(
                   children: [
-
+                    GenderWidget(
+                      onChange: (genderValue){
+                        _gender = genderValue;
+                      },
+                    ),
+                    HeightWidget(
+                      onChange: (heightValue) {
+                        _height = heightValue;
+                    },)
                   ],
                 ),
               ),
             ),
           ),
-       // Center(
-       //   child: ElevatedButton(
-       //     style: ButtonStyle(
-       //       backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-       //     ),
-       //     onPressed: () {
-       //       Navigator.push(context,
-       //       MaterialPageRoute(builder: (context)=>const BmiPage()),
-       //       );
-       //     },
-       //     child: const Text("Next Screen",
-       //     style: TextStyle(
-       //       color: Colors.white
-       //     ),
-       //     ),),
-       // ),
      );
    }
  }
