@@ -45,7 +45,7 @@ class _AgeWeightState extends State<AgeWeight> {
             child: Column(children: [
               Text(
                 widget.title,
-                style: const TextStyle(fontSize: 20, color: Colors.grey),
+                style: const TextStyle(fontSize: 20, color: Colors.black),
               ),
               const SizedBox(height: 10,),
               Padding(
@@ -55,7 +55,7 @@ class _AgeWeightState extends State<AgeWeight> {
                     InkWell(
                       child: const CircleAvatar(
                         radius: 12,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.lightGreen,
                         child: Icon(
                             Icons.remove, color: Colors.white),
                       ),
@@ -82,7 +82,7 @@ class _AgeWeightState extends State<AgeWeight> {
                     InkWell(
                       child: const CircleAvatar(
                         radius: 12,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.lightGreen,
                         child: Icon(
                             Icons.add, color: Colors.white),
                       ),

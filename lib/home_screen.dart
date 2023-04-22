@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:final_project/Height_Widget.dart';
+import 'package:final_project/bmi_score.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 import 'Weight_Age_widget.dart';
 import 'gender_widget.dart';
@@ -42,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                           "Please Enter Your information",
                             style: TextStyle(fontSize: 25,
-                            color: Colors.grey,
+                            color: Colors.black,
                           )
                       ),
                     ),
@@ -67,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onChange: (weightValue ) {
                               _weight = weightValue;
                             },
-                            title: 'Weight(Lbs)',
+                            title: 'Weight(kg)',
                             initValue: 50,
                             max: 200,
                             min: 0)
@@ -86,7 +88,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         child: SwipeableButtonView(
                           isFinished: _isFinished,
-                          onFinish: () {
+                          onFinish: () async {
+                            await Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: BmiScore(
+                                    bmiScore: _bmiTotal,
+                                    age: _age,
+                                  ),
+                                type: PageTransitionType.fade));
                             setState(() {
                               _isFinished = false;
                             });
